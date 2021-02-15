@@ -1,0 +1,45 @@
+# Community Standard Skyglow Data Format 1.0
+# URL: https://www.darksky.org/wp-content/uploads/bsk-pdf-manager/47_SKYGLOW_DEFINITIONS.PDF
+# Number of header lines: 35
+# This data is released under the following license: ODbL 1.0 http://opendatacommons.org/licenses/odbl/summary/
+# Device type: GLAS-SQM
+# Instrument ID: GLASSQM001
+# Data supplier: Alex Scerba / MSOE
+# Location name: America-Wisconsin-Milwaukee
+# Position (lat, lon, elev(m)): 43.0418, -87.9068, 203
+# Local timezone: America/Chicago
+# Time Synchronization: NTP
+# Moving / Stationary position: STATIONARY
+# Moving / Fixed look direction: FIXED
+# Number of channels: 1
+# Filter per channel: None
+# Measurement direction per channel: 0, 0
+# Field of view (degrees): 180
+# Number of fields per line: 6
+# GLAS-SQM serial number: GLASSQM0001
+# GLAS-SQM firmware version: 0.0.1
+# GLAS-SQM readout test: 00:00:01,0.24,10,-7.71,LENSS_TSL_0001
+# Comment: 
+# Comment: 
+# Comment: 
+# Comment: 
+# Comment: 
+# blank line 27
+# blank line 28
+# blank line 29
+# blank line 30
+# blank line 31
+# blank line 32
+# UTC Date & Time, Local Date & Time, Temperature, Counts
+# YYYY-MM-DDTHH:mm:ss.fff;YYYY-MM-DDTHH:mm:ss.fff;Celcius;number
+# END OF HEADER
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011
+2021-01-02;238;2011

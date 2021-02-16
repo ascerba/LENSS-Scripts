@@ -17,17 +17,15 @@ fi
 
 read -p "Enter name of sensor: " name
 
-##while ! [[ $name =~ ^[\w\_\-]*$ ]]
-##do
-##	echo $name
-##	read -p "Error: Name can only contain alphanumeric characters, '-', and '_'. Enter valid name: " name
-##done
-##echo $name
+while ! [[ "$name" =~ ^[a-zA-Z0-9_-]+$ ]]
+do
+	read -p "Error: Name can only contain alphanumeric characters, '-', and '_'. Enter valid name: " name
+done
 
 read -p "Enter date of data (YYYY-MM-DD): " date
 
 # Date check from https://unix.stackexchange.com/questions/236328/check-if-date-argument-is-in-yyyy-mm-dd-format
-while ! [[ $date =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
+while ! [[ "$date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
 do
 	read -p "Error: Invalid date format. Enter new date (YYYY-MM-DD): " date
 done
@@ -37,6 +35,10 @@ done
 # Return and error if the name or date cannot be found in the database
 # and ask for the user to re-enter the information.
 # Upon valid query, save data to $date$name.csv
+
+# TODO
+# Handle incorrect file permissions
+# Check that email was sent correctly or update status message
 
 # Email REGEX loop from https://stackoverflow.com/questions/32291127/bash-regex-email
 if [[ $outputOption == 'e' ]]
@@ -51,7 +53,9 @@ then
 			read -p "Email address $email is invalid. Please enter a vaild email." email
 		done
 		
+		echo "-- Sending report to $email..."
 		cat $name"_Header.txt" $date$name.csv | mailx -s "$date $name DSA Report" $email
+		echo "-- Report sent" # Should be updated to check if it actually sent
 	else
 		echo "Warning: No internet connection found. Saving to local file instead."
 		cat $name"_Header.txt" $date$name.csv > $date"_"$name"_DSA_Report.txt"

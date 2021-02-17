@@ -18,11 +18,11 @@ echo "# Community Standard Skyglow Data Format 1.0
 # Instrument ID: $sensorName" > $headerFile
 
 # TODO
-# Fix regex to accept names with alphanumeric characters, '-', '_', '@', '/' and '()'.
+# Fix regex to properly accept whitespace. Currently accepts anything.
 read -p "Enter name(s) of the data providers / affiliated institution: " dataSupplier
-while [[ "$dataSupplier" =~ ^[a-zA-Z0-9\ ]+$ ]]
+while [[ "$dataSupplier" =~ ^[a-zA-Z0-9\/\ ]+$ ]]
 do
-	read -p "Error: Field can only contain alphanumeric characters, '-', and '_'. Enter a valid entry: " dataSupplier
+	read -p "Error: Field can only contain alphanumeric characters, '/', and whitespace. Enter a valid entry: " dataSupplier
 done
 echo "# Data supplier: $dataSupplier" >> $headerFile
 

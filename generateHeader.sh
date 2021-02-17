@@ -3,7 +3,10 @@
 # per the DSA standards
 
 read -p "Enter new sensor name (only alphanumeric, \"-\", and \"_\"): " sensorName
-
+while ! [[ "$sensorName" =~ ^[a-zA-Z0-9_-]+$ ]]
+do
+	read -p "Error: Name can only contain alphanumric characters, '-', and '_'. Enter valid name: " sensorName
+done
 touch "$sensorName"_Header.txt
 headerFile="$sensorName"_Header.txt
 
@@ -14,8 +17,10 @@ echo "# Community Standard Skyglow Data Format 1.0
 # Device type: GLAS-SQM
 # Instrument ID: $sensorName" > $headerFile
 
+# TODO
+# Fix regex to accept names with alphanumeric characters, '-', '_', '@', '/' and '()'.
 read -p "Enter name(s) of the data providers / affiliated institution: " dataSupplier
-while ! [[ "$dataSupplier" =~ ^[a-zA-Z0-9_-]+$ ]]
+while [[ "$dataSupplier" =~ ^[a-zA-Z0-9\ ]+$ ]]
 do
 	read -p "Error: Field can only contain alphanumeric characters, '-', and '_'. Enter a valid entry: " dataSupplier
 done
@@ -30,12 +35,12 @@ echo "# Location name: $location" >> $headerFile
 
 echo "--Enter exact position of sensor--"
 read -p "Longitude (four decimals): " lon
-while ! [[ "$lon" =~ ^[0-9-+].[0-9]{4}+$ ]]
+while ! [[ "$lon" =~ ^[+-]?[0-9]+[.][0-9]{4}$ ]]
 do
 	read -p "Error: Field must be formatted as a float to four decimal places. Enter a valid value: " lon
 done
 read -p "Latitude (four decimals): " lat
-while ! [[ "$lat" =~ ^[0-9-+].[0-9]{4}+$ ]]
+while ! [[ "$lat" =~ ^[+-]?[0-9]+[.][0-9]{4}$ ]]
 do
 	read -p "Error: Field must be formatted as a float to four decimal places. Enter a valid value: " lat
 done

@@ -54,8 +54,7 @@ then
 		done
 		
 		echo "-- Sending report to $email..."
-		cat $name"_Header.txt" $date$name.csv | mailx -s "$date $name DSA Report" $email
-		echo "-- Report sent" # Should be updated to check if it actually sent
+		cat $name"_Header.txt" $date$name.csv | mailx -v -s "$date $name DSA Report" $email
 	else
 		echo "Warning: No internet connection found. Saving to local file instead."
 		cat $name"_Header.txt" $date$name.csv > $date"_"$name"_DSA_Report.txt"

@@ -1,8 +1,0 @@
-# Community Standard Skyglow Data Format 1.0
-# URL: https://www.darksky.org/wp-content/uploads/bsk-pdf-manager/47_SKYGLOW_DEFINITIONS.PDF
-# Number of header lines: 35
-# This data is released under the following license: ODbL 1.0 http://opendatacommons.org/licenses/odbl/summary/
-# Device type: GLAS-SQM
-# Instrument ID: aoeu
-# Data supplier: aoeu
-# Location name: aoeu
